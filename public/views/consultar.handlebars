@@ -1,0 +1,63 @@
+
+<body>
+    <script>
+		function confirmDelete(delUrl) {
+  			if (confirm("Deseja apagar o registro?"))
+   				document.location = delUrl;
+		}
+	</script>
+
+  {{#if mensagemSucesso}}
+    <div class="alert alert-success">
+        {{mensagemSucesso}}
+        {{!-- <a class="btn-fechar" href="/">X</a> --}}
+    </div>
+    {{/if}}
+ 
+  {{#if mensagemErro}}
+    <div class="alert alert-danger">
+        {{mensagemErro}}
+        {{!-- <a class="btn-fechar" href="/">X</a> --}}
+    </div>
+    {{/if}}
+
+  <div class="titulos">
+      <h1 id="titulo">Agendamento de Consultas Odontológica</h1>
+  </div>
+
+  <br>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Nascimento</th>
+          <th>Celular</th>
+          <th>Email</th>
+          <th>Dia</th>
+          <th>Horario</th>
+          <th>Motivo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id=TableData>
+        
+        {{#each agendamentos}}
+          <tr>
+            <td scope="col">{{nome}}</td>
+            <td scope="col">{{data_nascimento}}</td>
+            <td scope="col">{{celular}}</td>
+            <td scope="col">{{emali}}</td>
+            <td scope="col">{{data_consulta}}</td>
+            <td scope="col">{{hora_consulta}}</td>
+            <td scope="col">{{motivo_consulta}}</td>
+            <td>
+              <a href="/editar/{{id}}"><img class="icon" src="./img/editar.png" alt=""/></a>
+              <a style="cursor: pointer" onclick="javascript:confirmDelete('apagar/{{id}}')"><img class="icon" src="./img/excluir.png" alt=""/></a>  
+            </td>
+          </tr>
+          {{/each}}
+      </tbody>
+    </table>
+  </div>
+</body>
