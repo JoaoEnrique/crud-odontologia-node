@@ -4,43 +4,36 @@
             <h1 id="titulo">Agendamento de Consultas Odontológica</h1>
             <p id="subtitulo">Preencha o formulário para marcar sua consulta com o(a) dentista</p>
         </div>
-        <form action="{{#if agendamento}}/editar{{else}}/cadastrar{{/if}}" method="post">
+        <form class="row g-2" action="{{#if agendamento}}/editar{{else}}/cadastrar{{/if}}" method="post">      
             <input type="hidden" name="id" value="{{agendamento.id}}">
 
-                <div class="campo">
-                    <label for="nome">Nome</label>
-                    <input value="{{agendamento.nome}}" type="text" name="nome" id="nome" placeholder="Nome Completo" required>
+            <div class="col-12">
+                <label for="nome" class="form-label">Nome</label>
+                <input value="{{agendamento.nome}}" type="text" class="form-control" name="nome" id="nome" placeholder="">
+            </div>
+            <div class="col-12">
+                <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                <input value="{{agendamento.data_nascimento}}" type="date" class="form-control" name="data_nascimento" id="data_nascimento">
+            </div>
+            <div class="col-md-6">
+                <label for="celular" class="form-label">Celular</label>
+                <input value="{{agendamento.celular}}" type="number" class="form-control" name="celular" id="celular">
                 </div>
-                <div class="campo">
-                    <label for="data_nascimento">Data de nascimento</label>
-                    <input value="{{agendamento.data_nascimento}}" type="date" name="data_nascimento" id="data_nascimento" required>
+                <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input value="{{agendamento.email}}" type="email" class="form-control" id="email" name="email">
                 </div>
-
-            <fieldset class="grupo">
-                <div class="campo">
-                    <label for="celular">Celular</label>
-                    <input value="{{agendamento.celular}}" type="number" name="celular" id="celular" placeholder="xxxxx-xxxx" required>
+            <div class="col-md-6">
+                <label for="data_consulta" class="form-label">Data da consulta</label>
+                <input value="{{agendamento.data_consulta}}" type="date" class="form-control" id="data_consulta" name="data_consulta">
+            </div>
+            <div class="col-md-6">
+                <label for="hora_consulta" class="form-label">Horário da consulta</label>
+                <input value="{{agendamento.hora_consulta}}" type="time" class="form-control" id="hora_consulta" name="hora_consulta">
                 </div>
-                <div class="campo">
-                    <label for="email">Email</label>
-                    <input value="{{agendamento.email}}" type="email" name="email"  id="email" placeholder="***@gmail.com" required>
-                </div>         
-            </fieldset>
-
-            <fieldset class="grupo2">
-                <div class="campo">
-                    <label for="data_consulta">Data da consulta</label>
-                    <input value="{{agendamento.data_consulta}}" type="date" name="data_consulta" id="data_consulta" required>
-                </div>
-                <div class="campo">
-                    <label for="hora_consulta">Horário da consulta</label>
-                    <input value="{{agendamento.hora_consulta}}" type="time" name="hora_consulta" id="hora_consulta" required>
-                </div>
-            </fieldset>
-                
-            <div class="campo">
-                <label for="motivo_consulta">Motivo da consulta</label>
-                <select name="motivo_consulta" id="motivo_consulta">
+            <div class="col-md-4">
+                <label for="motivo_consulta" class="form-label">Motivo da consulta</label>
+                <select class="form-select" name="motivo_consulta" id="motivo_consulta">
                     <option selected disabled value="">Escolha...</option>
                     <option {{#if (eq agendamento.motivo_consulta "Restauração")}} selected {{/if}} value="Restauração">Restauração</option>
                     <option {{#if (eq agendamento.motivo_consulta "Canal")}} selected {{/if}} value="Canal">Canal</option>
@@ -50,16 +43,15 @@
                     <option {{#if (eq agendamento.motivo_consulta "Lentes")}} selected {{/if}} value="Lentes">Lentes</option>
                 </select>
             </div>
-        <br>
-
-            <button type="submit" class="botao">
-                {{#if agendamento}}
-                    Salvar
-                {{else}}
-                    Cadastrar
-                {{/if}}
-            </button>
-        <br>
-        </form> 
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">
+                     {{#if agendamento}}
+                        Salvar
+                    {{else}}
+                        Agendar
+                    {{/if}}
+                </button>
+            </div>
+        </form>
     </div>
 </body>
