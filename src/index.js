@@ -39,11 +39,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res)=>{
-    res.render('index')
+    res.render('index', {title: "Home"})
 })
 
 app.get('/cadastrar', (req, res)=>{
-    res.render('registrar')
+    res.render('registrar', { title: "Agendar" })
 })
 
 app.post('/cadastrar', async (req, res)=>{
@@ -74,7 +74,7 @@ app.get('/consultar', async (req, res)=>{
             a.id = documentSnapshot.id
             agendamentos.push(a)
         })
-        return res.render('consultar', { agendamentos, mensagemSucesso, mensagemErro })
+        return res.render('consultar', { agendamentos, mensagemSucesso, mensagemErro, title: "Consultar" })
     }).catch(error =>{
         return res.send(error)
     })
@@ -92,7 +92,7 @@ app.get('/editar/:id', async (req, res)=>{
         let agendamento = documentSnapshot.data()
         agendamento.id = documentSnapshot.id
 
-        res.render('registrar', {agendamento})
+        res.render('registrar', {agendamento, title: "Editar"})
     }).catch(error =>{
         return res.redirect(`/consultar?mensagemErro=${error}`)
     })
