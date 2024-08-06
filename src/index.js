@@ -2,11 +2,13 @@ import express from 'express';
 import exphbs from 'express-handlebars';
 import path from 'path';
 import { Helper } from './helpers/index.js';
+import { AgendamentoRoutes } from './routes/agendamento.js'
 
 const PORT = 3000;
 
 const app = express();
-const helperInstance = new Helper(); // Crie uma instância da classe
+const helperInstance = new Helper();
+const agendamentoRoutes = new AgendamentoRoutes().routes(); // Chama a função routes
 
 app.listen(PORT, () => console.log('http://localhost:' + PORT))
 
@@ -27,18 +29,4 @@ app.set('views', path.join("public/views"));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res)=>{
-    res.render('index', {title: "Home"})
-})
-
-app.get('/cadastrar', (req, res)=>{
-    res.render('registrar', { title: "Agendar" })
-})
-
-
-app.get('/consultar', async (req, res)=>{
-    let mensagemSucesso = req.query.mensagemSucesso;
-    let mensagemErro = req.query.mensagemErro;
-    
-    return res.render('consultar', { agendamentos: [], mensagemSucesso, mensagemErro, title: "Consultar" })
-})
+app.use(agendamentoRoutes);
