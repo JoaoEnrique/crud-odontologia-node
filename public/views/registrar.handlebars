@@ -4,7 +4,7 @@
             <h1 id="titulo">Agendamento de Consultas Odontológica</h1>
             <p id="subtitulo">Preencha o formulário para marcar sua consulta com o(a) dentista</p>
         </div>
-        <form class="row g-2" action="{{#if agendamento}}/editar{{else}}/cadastrar{{/if}}" method="post">      
+        <form class="row g-2" action="" method="get">      
             <input type="hidden" name="id" value="{{agendamento.id}}">
 
             <div class="col-12">
