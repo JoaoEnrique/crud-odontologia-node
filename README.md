@@ -1,4 +1,7 @@
 CRUD node e Firestore
+> [!IMPORTANT]
+> É preciso ter uma chave do Firestore
+
 
 ```cmd
 git clone https://github.com/JoaoEnrique/crud-odontologia-node
