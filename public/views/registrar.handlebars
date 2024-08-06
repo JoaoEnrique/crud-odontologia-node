@@ -1,57 +1,61 @@
-<body>
-    <div class="container">
-        <div class="titulos">
-            <h1 id="titulo">Agendamento de Consultas Odontológica</h1>
-            <p id="subtitulo">Preencha o formulário para marcar sua consulta com o(a) dentista</p>
-        </div>
-        <form class="row g-2" action="" method="get">      
-            <input type="hidden" name="id" value="{{agendamento.id}}">
+<div id="main-content">
+    {{> navbar}}
 
-            <div class="col-12">
-                <label for="nome" class="form-label">Nome</label>
-                <input value="{{agendamento.nome}}" type="text" class="form-control" name="nome" id="nome" placeholder="">
+    <body style="background-color: #fff;">
+        <div class="container">
+            <div class="titulos">
+                <h1 id="titulo">Agendamento de Consultas Odontológica</h1>
+                <p id="subtitulo">Preencha o formulário para marcar sua consulta com o(a) dentista</p>
             </div>
-            <div class="col-12">
-                <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                <input value="{{agendamento.data_nascimento}}" type="date" class="form-control" name="data_nascimento" id="data_nascimento">
-            </div>
-            <div class="col-md-6">
-                <label for="celular" class="form-label">Celular</label>
-                <input value="{{agendamento.celular}}" type="number" class="form-control" name="celular" id="celular">
+            <form class="row g-2" action="" method="get">      
+                <input type="hidden" name="id" value="{{agendamento.id}}">
+
+                <div class="col-12">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input value="{{agendamento.nome}}" type="text" class="form-control" name="nome" id="nome" placeholder="">
+                </div>
+                <div class="col-12">
+                    <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                    <input value="{{agendamento.data_nascimento}}" type="date" class="form-control" name="data_nascimento" id="data_nascimento">
                 </div>
                 <div class="col-md-6">
-                <label for="email" class="form-label">Email</label>
-                <input value="{{agendamento.email}}" type="email" class="form-control" id="email" name="email">
+                    <label for="celular" class="form-label">Celular</label>
+                    <input value="{{agendamento.celular}}" type="number" class="form-control" name="celular" id="celular">
                 </div>
-            <div class="col-md-6">
-                <label for="data_consulta" class="form-label">Data da consulta</label>
-                <input value="{{agendamento.data_consulta}}" type="date" class="form-control" id="data_consulta" name="data_consulta">
-            </div>
-            <div class="col-md-6">
-                <label for="hora_consulta" class="form-label">Horário da consulta</label>
-                <input value="{{agendamento.hora_consulta}}" type="time" class="form-control" id="hora_consulta" name="hora_consulta">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input value="{{agendamento.email}}" type="email" class="form-control" id="email" name="email">
                 </div>
-            <div class="col-md-4">
-                <label for="motivo_consulta" class="form-label">Motivo da consulta</label>
-                <select class="form-select" name="motivo_consulta" id="motivo_consulta">
-                    <option selected disabled value="">Escolha...</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Restauração")}} selected {{/if}} value="Restauração">Restauração</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Canal")}} selected {{/if}} value="Canal">Canal</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Implante")}} selected {{/if}} value="Implante">Implante</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Extração")}} selected {{/if}} value="Extração">Extração</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Clareamento")}} selected {{/if}} value="Clareamento">Clareamento</option>
-                    <option {{#if (eq agendamento.motivo_consulta "Lentes")}} selected {{/if}} value="Lentes">Lentes</option>
-                </select>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">
-                     {{#if agendamento}}
-                        Salvar
-                    {{else}}
-                        Agendar
-                    {{/if}}
-                </button>
-            </div>
-        </form>
-    </div>
-</body>
+                <div class="col-md-6">
+                    <label for="data_consulta" class="form-label">Data da consulta</label>
+                    <input value="{{agendamento.data_consulta}}" type="date" class="form-control" id="data_consulta" name="data_consulta">
+                </div>
+                <div class="col-md-6">
+                    <label for="hora_consulta" class="form-label">Horário da consulta</label>
+                    <input value="{{agendamento.hora_consulta}}" type="time" class="form-control" id="hora_consulta" name="hora_consulta">
+                </div>
+                <div class="col-md-4">
+                    <label for="motivo_consulta" class="form-label">Motivo da consulta</label>
+                    <select class="form-select" name="motivo_consulta" id="motivo_consulta">
+                        <option selected disabled value="">Escolha...</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Restauração")}} selected {{/if}} value="Restauração">Restauração</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Canal")}} selected {{/if}} value="Canal">Canal</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Implante")}} selected {{/if}} value="Implante">Implante</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Extração")}} selected {{/if}} value="Extração">Extração</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Clareamento")}} selected {{/if}} value="Clareamento">Clareamento</option>
+                        <option {{#if (eq agendamento.motivo_consulta "Lentes")}} selected {{/if}} value="Lentes">Lentes</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">
+                        {{#if agendamento}}
+                            Salvar
+                        {{else}}
+                            Agendar
+                        {{/if}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </body>
+</div>
