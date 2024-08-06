@@ -1,25 +1,27 @@
-const express = require('express')
-const app = express()
-const path = require('path');
-const PORT = 3000
+import express from 'express';
+import exphbs from 'express-handlebars';
+import path from 'path';
+import { Helper } from './helpers/index.js';
+
+const PORT = 3000;
+
+const app = express();
+const helperInstance = new Helper(); // Crie uma instância da classe
 
 app.listen(PORT, () => console.log('http://localhost:' + PORT))
 
 // Configuração do handlebars
-const exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs.engine({
     defaultLayout: "main",
-    layoutsDir: path.join(__dirname, "../public", "views", "layouts"),
-    partialsDir: path.join(__dirname, "../public", "views", "layouts"),
+    layoutsDir: path.join("public", "views", "layouts"),
+    partialsDir: path.join("public", "views", "layouts"),
     helpers: {
-        eq: function(v1, v2){
-            return v1 == v2
-        }
+        eq: helperInstance.eq // Registrar o helper eq da instância
     }
 
 }));
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, "../public/views"));
+app.set('views', path.join("public/views"));
 
 // Servindo arquivos estáticos
 app.use(express.static('public'));

@@ -6,5 +6,6 @@
   },
   "scripts": {
     "start": "nodemon src/index.js"
-  }
+  },
+  "type": "module"
 }
